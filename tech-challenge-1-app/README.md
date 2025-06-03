@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# tech-challenge-1-app
+
+## Description
+
+This is a Next.js 15 app with a JSON Server backend used as a BFF (Backend For Frontend).  
+The project uses React 19, TailwindCSS 4, and other modern tools to provide a frontend for managing transactions and bank accounts.
+
+## Features
+
+- Frontend with Next.js (React 19)
+- Backend API mock with `json-server` serving data from `bff/db.json`
+- Concurrent development of frontend and backend with `concurrently`
+- Input components with currency formatting
+- State management with React hooks
+- API integration via fetch calls
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
+- Node.js (v18+ recommended)
+- npm (v9+ recommended)
+
+### Installation
+
+#### Clone the repository:
+
+git clone https://github.com/aquila-borges/fiap-frontend.git
+cd fiap-frontend/tech-challenge-1-app
+
+#### Install dependencies:
+
+npm install
+
+#### Running the project
+###### Start both frontend and backend concurrently in development mode:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Frontend runs on: http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+JSON Server backend runs on: http://localhost:3001
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+#### Available scripts
 
-## Learn More
+- npm run dev: Runs frontend and backend concurrently
 
-To learn more about Next.js, take a look at the following resources:
+- npm run dev:next: Runs only the Next.js frontend with Turbopack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- npm run dev:bff: Runs only the JSON Server backend
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- npm run build: Builds the Next.js app for production
 
-## Deploy on Vercel
+- npm run start: Starts the Next.js app in production mode
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- npm run lint: Runs ESLint on the codebase
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### Project Structure
+/app: Next.js app folder (pages, components, API routes)
+
+/bff: Contains db.json file for JSON Server mocking data
+
+/core: Core domain files and DTOs
+
+/infraestructure: Implementation details like repositories
+
+#### Dependencies
+
+- React 19
+- Next.js 15.3.2
+- TailwindCSS 4
+- json-server (mock backend)
+- react-number-format (currency formatting)
+- concurrently (run frontend and backend together)
+
+#### Notes
+The backend is a simple mock server and does not persist data between restarts.
+
+Customize the bff/db.json to change backend data.
+
+Input components are customized to handle currency input formatting and validation.
+
+#### License
+This project is private and not open source.
+Used only for educational purposes.
+
+#### Author
+Developed by aquila-borges
