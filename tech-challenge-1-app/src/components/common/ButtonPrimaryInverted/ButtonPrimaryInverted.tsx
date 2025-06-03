@@ -1,28 +1,29 @@
-type ButtonSecondaryProps = {
+type ButtonPrimaryProps = {
   children: React.ReactNode;
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
+  color?: string;
   disabled?: boolean;
   isLoading?: boolean;
   className?: string;
 };
 
-export default function ButtonSecondary({
+export default function ButtonPrimaryInverted({
   children,
   onClick,
   type = 'button',
   disabled = false,
   isLoading = false,
   className = '',
-}: ButtonSecondaryProps) {
+}: ButtonPrimaryProps) {
   return (
     <button
       type={type}
       onClick={onClick}
       disabled={disabled || isLoading}
-      className={`btn-base border border-bytebank-green text-bytebank-green hover:bg-bytebank-green hover:text-black transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
+      className={`bg-black btn-base text-white hover:bg-bytebank-green transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
     >
-      {isLoading ? 'Carregando...' : children}
+      {isLoading ? "Carregando..." : children}
     </button>
   );
 }

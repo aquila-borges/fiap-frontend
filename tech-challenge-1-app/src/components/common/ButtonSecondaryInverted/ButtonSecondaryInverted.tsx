@@ -7,7 +7,7 @@ type ButtonSecondaryProps = {
   className?: string;
 };
 
-export default function ButtonSecondary({
+export default function ButtonSecondaryInverted({
   children,
   onClick,
   type = 'button',
@@ -20,7 +20,7 @@ export default function ButtonSecondary({
       type={type}
       onClick={onClick}
       disabled={disabled || isLoading}
-      className={`btn-base border border-bytebank-green text-bytebank-green hover:bg-bytebank-green hover:text-black transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
+      className={`btn-base border border-black text-black disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
     >
       {isLoading ? 'Carregando...' : children}
     </button>
