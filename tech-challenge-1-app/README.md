@@ -64,7 +64,7 @@ JSON Server backend runs on: http://localhost:3001
 
 /infraestructure: Implementation details like repositories
 
-### Dependencies
+## Dependencies
 
 - React 19
 - Next.js 15.3.2
@@ -73,16 +73,16 @@ JSON Server backend runs on: http://localhost:3001
 - react-number-format (currency formatting)
 - concurrently (run frontend and backend together)
 
-### Notes
+## Notes
 The backend is a simple mock server and does not persist data between restarts.
 
 Customize the bff/db.json to change backend data.
 
 Input components are customized to handle currency input formatting and validation.
 
-### License
+## License
 This project is private and not open source.
 Used only for educational purposes.
 
-### Author
+## Author
 Developed by aquila-borges
