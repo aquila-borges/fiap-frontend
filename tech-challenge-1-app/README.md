@@ -25,7 +25,9 @@ The project uses React 19, TailwindCSS 4, and other modern tools to provide a fr
 
 #### Clone the repository:
 
-<pre> ```bash git clone https://github.com/aquila-borges/fiap-frontend.git cd fiap-frontend/tech-challenge-1-app ``` </pre>
+`bash git clone https://github.com/aquila-borges/fiap-frontend.git`
+
+`cd fiap-frontend/tech-challenge-1-app`
 
 #### Install dependencies:
 
