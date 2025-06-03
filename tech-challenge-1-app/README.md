@@ -25,21 +25,21 @@ The project uses React 19, TailwindCSS 4, and other modern tools to provide a fr
 
 #### Clone the repository:
 
-git clone https://github.com/aquila-borges/fiap-frontend.git
-cd fiap-frontend/tech-challenge-1-app
+`git clone https://github.com/aquila-borges/fiap-frontend.git`
+`cd fiap-frontend/tech-challenge-1-app`
 
 #### Install dependencies:
 
-npm install
+`npm install`
 
 #### Running the project
 ###### Start both frontend and backend concurrently in development mode:
 
-npm run dev
+`npm run dev`
 
-Frontend runs on: http://localhost:3000
+> Frontend runs on: http://localhost:3000
 
-JSON Server backend runs on: http://localhost:3001
+> JSON Server backend runs on: http://localhost:3001
 
 #### Available scripts
 
