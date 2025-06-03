@@ -1,0 +1,112 @@
+@import "tailwindcss";
+@layer theme, base, components, utilities;
+
+@layer theme {
+  :root {
+    --bytebank-black: #004D61;    
+    --bytebank-gray: #CBCBCB;    
+    --bytebank-light-gray: #F8F8F8;
+    --bytebank-green: #47A138;
+    --bytebank-light-green: #DEE9EA;
+    --bytebank-light-white: #F5F5F5;
+    --bytebank-orange: #FF5031;
+
+    /* INPUT COLORS */
+    --bytebank-input-gray: #444444;
+    --bytebank-input-light-green: #E4EDE3;
+    --bytebank-input-black: #E4ECF0;    
+  }
+}
+
+@theme inline {
+  --color-bytebank-black: var(--bytebank-black);
+  --color-bytebank-orange: var(--bytebank-orange);
+  --color-bytebank-light-green: var(--bytebank-light-green);
+  --color-bytebank-light-gray: var(--bytebank-light-gray);
+  --color-bytebank-white: var(--bytebank-light-white);
+  --color-bytebank-gray: var(--bytebank-gray);
+  --color-bytebank-green: var(--bytebank-green);
+  --color-bytebank-gradient: var(--bytebank-gradient);
+
+  --color-bytebank-input-gray: var(--bytebank-input-gray);
+  --color-bytebank-input-light-green: var(--bytebank-input-light-green);
+  --color-bytebank-input-black: var(--bytebank-input-black);
+}
+
+@layer base {
+  /* Preflight styles */
+}
+
+@layer components {
+  .header-base {
+    @apply h-24 w-full flex justify-center;
+  }
+
+  .btn-base {
+    @apply flex items-center justify-center font-semibold rounded-lg h-12 px-10 hover:cursor-pointer;
+  }
+}
+
+@layer utilities {
+  .text-bytebank-sm {
+    font-size: 13px;
+  }
+
+  .text-bytebank-xl {
+    font-size: 25px;
+  }
+
+  .text-bytebank-home-marketing {
+    color: #767676;
+    text-align: center;
+    font-size: 16px;
+  }
+}
+
+/*
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}*/
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bytebank-black) transparent;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: var(--bytebank-light-green);
+}
+
+/* Scrollbar customizada para a aplicação inteira */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--bytebank-black); /* tom neutro moderno */
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+input[type="checkbox"] {
+  accent-color: var(--bytebank-black);
+}
+
+.options-wrap {
+  border-bottom: 1px solid black;
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-bottom-color: var(--bytebank-green);
+  }
+}

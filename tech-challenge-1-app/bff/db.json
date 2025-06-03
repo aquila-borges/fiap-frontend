@@ -1,0 +1,56 @@
+{
+  "clients": [
+    {
+      "id": "053d9b81-a669-40da-99a3-97019861a164",
+      "name": "Áquila Borges Moreira",
+      "cpfCnpj": "123.456.789-00",
+      "bankAccountId": "39ce5f35-41bb-475d-b453-dea4b39cb14d"
+    }
+  ],
+  "bankAccounts": [
+    {
+      "id": "39ce5f35-41bb-475d-b453-dea4b39cb14d",
+      "balance": 17000
+    }
+  ],
+  "transactions": [
+    {
+      "id": "daf249ef-b773-4a9a-a7f5-0d95d365dd56",
+      "bankAccountId": "39ce5f35-41bb-475d-b453-dea4b39cb14d",
+      "amount": 500,
+      "type": "currency_exchange",
+      "createdAt": "2025-06-03T06:37:25.407Z",
+      "updatedAt": "2025-06-03T07:09:14.411Z"
+    },
+    {
+      "id": "86a97e08-9bfa-4c7e-bbf1-85581e9e0495",
+      "bankAccountId": "39ce5f35-41bb-475d-b453-dea4b39cb14d",
+      "amount": 15000,
+      "type": "bank_transfer",
+      "createdAt": "2025-06-03T07:05:57.823Z",
+      "updatedAt": "2025-06-03T07:09:23.886Z"
+    },
+    {
+      "id": "bbae6690-dbfb-4166-a95d-0c6150ced60f",
+      "bankAccountId": "39ce5f35-41bb-475d-b453-dea4b39cb14d",
+      "amount": 20,
+      "type": "currency_exchange",
+      "createdAt": "2025-06-03T07:09:46.992Z"
+    },
+    {
+      "id": "78699651-ed7e-488e-b585-674da80f95db",
+      "bankAccountId": "39ce5f35-41bb-475d-b453-dea4b39cb14d",
+      "amount": -520,
+      "type": "currency_exchange",
+      "createdAt": "2025-06-03T07:51:23.720Z"
+    },
+    {
+      "id": "d22554ab-7b42-4999-8982-28c5b9bc862d",
+      "bankAccountId": "39ce5f35-41bb-475d-b453-dea4b39cb14d",
+      "amount": 2000,
+      "type": "currency_exchange",
+      "createdAt": "2025-06-03T07:54:31.582Z",
+      "updatedAt": "2025-06-03T08:48:46.435Z"
+    }
+  ]
+}
