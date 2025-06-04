@@ -27,7 +27,7 @@ export default function DashboardBankStatment({ data }: BankStatmentProps) {
 
   useEffect(() => {
     const fetchAll = async () => {
-      const res = await fetch(`/api/transactions`);
+      const res = await fetch(`/api/transactions?bankAccountId=${data[0]?.bankAccountId}`);
       if (res.ok) {
         const updated = await res.json();
         setTransactions(updated);
@@ -73,15 +73,17 @@ export default function DashboardBankStatment({ data }: BankStatmentProps) {
         return original && original.amount !== amount;
       });
 
-      await Promise.all(
-        updates.map(([id, { amount }]) =>
-          fetch(`/api/transactions/${id}`, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ amount, updatedAt: new Date().toISOString() }),
-          })
-        )
-      );
+      for (const [id, { amount }] of updates) {
+        const res = await fetch(`/api/transactions/${id}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ amount, updatedAt: new Date().toISOString() }),
+        });
+
+        if (!res.ok) {
+          throw new Error(`Erro ao atualizar transação com id ${id}`);
+        }
+      }
 
       setTransactions((prev) =>
         prev.map((tx) => {

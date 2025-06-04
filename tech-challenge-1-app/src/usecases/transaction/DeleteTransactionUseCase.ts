@@ -28,7 +28,7 @@ export class DeleteTransactionUseCase {
     bankAccount.balance += inferredType === Outcome ? normalizedAmount : -normalizedAmount;
 
     // 4. Atualizar o saldo da conta
-    console.log("Updating bank account balance:", bankAccount.balance);
+    console.log("Updating bank account balance to:", bankAccount.balance);
     await this.bankAccountRepo.update(transaction.bankAccountId, bankAccount);
 
     // 5. Excluir a transação

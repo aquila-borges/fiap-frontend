@@ -28,7 +28,7 @@ export class CreateTransactionUseCase {
     bankAccount.balance += inferredType === Income ? normalizedAmount : -normalizedAmount;
     
     // 2. Atualizar conta bancária
-    console.log("Updating bank account balance:", bankAccount.balance);
+    console.log("Updating bank account balance to:", bankAccount.balance);
     await this.bankAccountRepo.update(dto.bankAccountId, bankAccount);
     
     return {

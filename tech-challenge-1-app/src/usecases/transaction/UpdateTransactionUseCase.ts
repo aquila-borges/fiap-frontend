@@ -38,7 +38,7 @@ export class UpdateTransactionUseCase {
     bankAccount.balance += newInferredType === Outcome ? -newNormalizedAmount : newNormalizedAmount;
 
     // 5. Atualizar saldo da conta
-    console.log("Updating bank account balance:", bankAccount.balance);
+    console.log("Updating bank account balance to:", bankAccount.balance);
     await this.bankAccountRepo.update(bankAccount.id, bankAccount);
 
     // 6. Atualizar transação

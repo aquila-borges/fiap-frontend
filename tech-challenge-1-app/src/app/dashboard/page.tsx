@@ -45,36 +45,34 @@ export default async function Dashboard() {
   const transactions = await getTransactions(clientBalance.bankAccount.id);
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col gap-y-7">
       <DashboardHeader />
-      <div className="max-h-screen flex flex-col gap-y-7 sm:mt-5">
-        <main className="flex justify-center flex-grow">
-          <div className="container px-4 flex flex-col flex-grow">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-6 gap-y-6 h-full">
-              <div className="lg:col-span-2 flex lg:justify-end">
-                <div className="hidden sm:block lg:hidden w-full">                
-                  <DashboardMenuHorizontal />
-                </div>
-                
-                <div className="hidden lg:block">
-                  <DashboardMenuVertical />
-                </div>
+      <main className="flex justify-center flex-grow">
+        <div className="container px-4 flex flex-col flex-grow">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-6 gap-y-6 h-full">
+            <div className="lg:col-span-2 flex lg:justify-end">
+              <div className="hidden sm:block lg:hidden w-full">                
+                <DashboardMenuHorizontal />
               </div>
-
-              <div className="lg:col-span-7">
-                <div className="grid grid-cols-1 gap-y-6 h-full">
-                  <DashboardBalance data={clientBalance} />
-                  <DashboardTransaction bankAccountId={clientBalance.bankAccount.id} />
-                </div>
-              </div>
-
-              <div className="lg:col-span-3 max-h-screen">
-                <DashboardBankStatment data={transactions} />
+              
+              <div className="hidden lg:block">
+                <DashboardMenuVertical />
               </div>
             </div>
+
+            <div className="lg:col-span-7">
+              <div className="grid grid-cols-1 gap-y-6 h-full">
+                <DashboardBalance data={clientBalance} />
+                <DashboardTransaction bankAccountId={clientBalance.bankAccount.id} />
+              </div>
+            </div>
+
+            <div className="lg:col-span-3 max-h-screen">
+              <DashboardBankStatment data={transactions} />
+            </div>
           </div>
-        </main>
-      </div>
-    </>
+        </div>
+      </main>
+    </div>
   );
 }

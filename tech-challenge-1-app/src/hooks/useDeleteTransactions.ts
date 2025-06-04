@@ -8,18 +8,38 @@ export function useDeleteTransactions(
 
   const deleteTransactions = useCallback(async (ids: string[]) => {
     setLoading(true);
+    const failedIds: string[] = [];
+    const successfullyDeletedIds: string[] = [];
+
     try {
-      await Promise.all(
-        ids.map(async (id) => {
+      for (const id of ids) {
+        try {
           const res = await fetch(`/api/transactions/${id}`, { method: "DELETE" });
-          if (!res.ok) throw new Error(`Erro ao excluir transação com id ${id}`);
-        })
-      );
-      setTransactions((prev) => prev.filter((t) => !ids.includes(t.id)));
+          if (!res.ok) {
+            console.error(`Erro ao excluir transação com id ${id}: ${res.statusText}`);
+            failedIds.push(id);
+          } else {
+            successfullyDeletedIds.push(id);
+          }
+        } catch (err) {
+          console.error(`Erro inesperado ao excluir transação com id ${id}:`, err);
+          failedIds.push(id);
+        }
+      }
+
+      if (successfullyDeletedIds.length > 0) {
+        setTransactions((prev) =>
+          prev.filter((t) => !successfullyDeletedIds.includes(t.id))
+        );
+      }
+
+      if (failedIds.length > 0) {
+        console.warn("Não foi possível excluir os seguintes IDs:", failedIds);
+        // Exemplo: toast.warning(`Falha ao excluir ${failedIds.length} transações.`);
+        return false;
+      }
+
       return true;
-    } catch (error: any) {
-      console.error("Erro ao excluir transações:", error.message || error);
-      return false;
     } finally {
       setLoading(false);
     }
