@@ -10,6 +10,7 @@
     --bytebank-light-green: #DEE9EA;
     --bytebank-light-white: #F5F5F5;
     --bytebank-orange: #FF5031;
+    --bytebank-muted: #8B8B8B;
 
     /* INPUT COLORS */
     --bytebank-input-gray: #444444;
@@ -27,6 +28,7 @@
   --color-bytebank-gray: var(--bytebank-gray);
   --color-bytebank-green: var(--bytebank-green);
   --color-bytebank-gradient: var(--bytebank-gradient);
+  --color-bytebank-muted: var(--bytebank-muted);
 
   --color-bytebank-input-gray: var(--bytebank-input-gray);
   --color-bytebank-input-light-green: var(--bytebank-input-light-green);
@@ -103,7 +105,7 @@ input[type="checkbox"] {
 }
 
 .options-wrap {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--bytebank-black);
   transition: border-color 0.3s ease;
 
   &:hover {

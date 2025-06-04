@@ -40,37 +40,49 @@ export default function DashboardTransaction({ bankAccountId }: TransactionProps
   }
 
   return (
-    <div className="bg-bytebank-gray rounded-lg w-full h-full p-7 relative overflow-hidden">
+    <div className="bg-bytebank-gray rounded-lg w-full h-full p-7 relative overflow-hidden flex flex-col ">
       <img
         src="/images/Pixels3.png"
-        className="h-[180px] w-[180px] absolute top-0 right-0"
+        className="h-[140px] w-[140px] md:h-[180px] md:w-[180px] absolute top-0 right-0 opacity-80 pointer-events-none"
       />
-
       <img
         src="/images/Pixels4.png"
-        className="h-[180px] w-[180px] absolute bottom-0 left-0"
+        className="h-[140px] w-[140px] md:h-[180px] md:w-[180px] absolute bottom-0 left-0 opacity-80 pointer-events-none"
       />
 
-      <div className="relative z-10">
-        <div className="flex flex-col mb-9">
-          <span className="font-bold text-bytebank-xl text-bytebank-light-green mb-8">Nova transação</span>
+      <div className="z-10 w-full">
+        <div className="flex flex-col gap-6 mb-9 items-center md:items-start">
+          <span className="font-bold text-bytebank-xl text-bytebank-light-green">Nova transação</span>
 
-          <InputSelect
-            options={transactionTypeOptions}
-            value={selectedType}
-            onChange={setSelectedType}
-            placeholder="Selecione o tipo de transação"
-          />
-
-          <span className="font-semibold text-bytebank-light-green text-base mt-8 mb-4">Valor</span>
+          <div className="md:w-[350px] w-full">
+            <InputSelect
+              options={transactionTypeOptions}
+              value={selectedType}
+              onChange={setSelectedType}
+              placeholder="Selecione o tipo de transação"
+            />
+          </div>
           
-          <InputMoney value={amount} onChange={setAmount} />
+
+          <div className="mb-2">
+            <span className="font-semibold text-bytebank-light-green text-base mb-2 block">Valor</span>
+            <InputMoney value={amount} onChange={setAmount} />
+          </div>
+
+          <ButtonPrimary
+            onClick={handleSubmit}
+            disabled={loading || !selectedType || amount === 0}
+            aria-busy={loading}
+            aria-disabled={loading || !selectedType || amount === 0}
+          >
+            {loading ? "Processando..." : "Concluir transação"}
+          </ButtonPrimary>
         </div>
 
-        <ButtonPrimary onClick={handleSubmit} disabled={loading || !selectedType || amount === 0} >
-          {loading ? "Processando..." : "Concluir transação"}
-        </ButtonPrimary>
+        
       </div>
+
+      <img src="/images/Ilustracao2.png" className="md:absolute bottom-5 right-5 pointer-events-none lg:hidden z-5 w-auto self-center" />
     </div>
   );
 }

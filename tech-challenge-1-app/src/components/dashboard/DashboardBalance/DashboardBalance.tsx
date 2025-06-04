@@ -38,7 +38,7 @@ export default function DashboardBalance({ data }: DashboardBalanceProps) {
       <div className="flex flex-col">
         <div className="mb-3">
           <div className="font-semibold text-bytebank-xl text-white w-full">
-            <span>Olá, {data?.name?.split(" ")[0] ?? "..."}</span>
+            Olá, {data?.name ? `${data.name.split(" ")[0]} :)` : "..."}
           </div>
         </div>
 

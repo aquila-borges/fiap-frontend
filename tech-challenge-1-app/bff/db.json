@@ -10,7 +10,7 @@
   "bankAccounts": [
     {
       "id": "39ce5f35-41bb-475d-b453-dea4b39cb14d",
-      "balance": 17000
+      "balance": 3500
     }
   ],
   "transactions": [
@@ -47,10 +47,33 @@
     {
       "id": "d22554ab-7b42-4999-8982-28c5b9bc862d",
       "bankAccountId": "39ce5f35-41bb-475d-b453-dea4b39cb14d",
-      "amount": 2000,
+      "amount": 1000,
       "type": "currency_exchange",
       "createdAt": "2025-06-03T07:54:31.582Z",
-      "updatedAt": "2025-06-03T08:48:46.435Z"
+      "updatedAt": "2025-06-03T22:56:29.677Z"
+    },
+    {
+      "id": "e93190af-9fbc-48bc-884f-5681b1a47f4f",
+      "bankAccountId": "39ce5f35-41bb-475d-b453-dea4b39cb14d",
+      "amount": -1500,
+      "type": "currency_exchange",
+      "createdAt": "2025-06-03T21:54:50.420Z",
+      "updatedAt": "2025-06-03T21:55:38.152Z"
+    },
+    {
+      "id": "a97ea8cf-cc08-4a14-8d0c-efdcf32c670e",
+      "bankAccountId": "39ce5f35-41bb-475d-b453-dea4b39cb14d",
+      "amount": -16000,
+      "type": "bank_transfer",
+      "createdAt": "2025-06-03T21:55:18.037Z"
+    },
+    {
+      "id": "0e9cc6e8-0475-4c9a-8465-e4f68dcad75e",
+      "bankAccountId": "39ce5f35-41bb-475d-b453-dea4b39cb14d",
+      "amount": 5000,
+      "type": "currency_exchange",
+      "createdAt": "2025-06-03T22:14:23.323Z",
+      "updatedAt": "2025-06-03T22:56:39.052Z"
     }
   ]
 }

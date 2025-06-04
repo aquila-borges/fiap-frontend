@@ -34,7 +34,7 @@ export default function InputSelect<T>({
   }
 
   return (
-    <div className="w-[350px] max-w-sm">
+    <div className="w-full">
       <Listbox value={selected} onChange={handleChange}>
         <div className="relative">
           <ListboxButton

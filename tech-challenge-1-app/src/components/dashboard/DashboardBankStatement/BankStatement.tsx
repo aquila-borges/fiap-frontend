@@ -17,9 +17,9 @@ interface BankStatmentProps {
 }
 
 export default function DashboardBankStatment({ data }: BankStatmentProps) {
-  const [ transactions, setTransactions] = useSortedTransactions<TransactionResponseDTO>(data);
+  const [transactions, setTransactions] = useSortedTransactions<TransactionResponseDTO>(data);
   const { deleteTransactions } = useDeleteTransactions(setTransactions);
-    
+
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -34,10 +34,10 @@ export default function DashboardBankStatment({ data }: BankStatmentProps) {
       }
     };
 
-    emitter.on("transations:refresh", fetchAll);
+    emitter.on('transations:refresh', fetchAll);
 
     return () => {
-      emitter.off("transations:refresh", fetchAll);
+      emitter.off('transations:refresh', fetchAll);
     };
   }, []);
 
@@ -50,7 +50,7 @@ export default function DashboardBankStatment({ data }: BankStatmentProps) {
   const confirmDelete = async () => {
     const success = await deleteTransactions(selectedIds);
     if (success) {
-      emitter.emit("balance:refresh");
+      emitter.emit('balance:refresh');
       setSelectedIds([]);
       setIsDeleting(false);
     }
@@ -61,7 +61,7 @@ export default function DashboardBankStatment({ data }: BankStatmentProps) {
       acc[tx.id] = { amount: Number(tx.amount) };
       return acc;
     }, {} as Record<string, { amount: number }>);
-    
+
     setEditValues(initialValues);
     setIsEditing(true);
   };
@@ -83,9 +83,8 @@ export default function DashboardBankStatment({ data }: BankStatmentProps) {
         )
       );
 
-      // Atualiza somente as modificadas
       setTransactions((prev) =>
-        prev.map(tx => {
+        prev.map((tx) => {
           const update = editValues[tx.id];
           const changed = updates.find(([id]) => id === tx.id);
           if (changed && update) {
@@ -97,58 +96,67 @@ export default function DashboardBankStatment({ data }: BankStatmentProps) {
 
       setIsEditing(false);
       setEditValues({});
-      emitter.emit("balance:refresh");
+      emitter.emit('balance:refresh');
     } catch (error) {
       console.error('Erro ao editar transações:', error);
     }
   };
 
+  const renderActions = () => {
+    if (isDeleting) {
+      return (
+        <>
+          <CircleButton
+            icon={XMarkIcon}
+            onClick={() => {
+              setIsDeleting(false);
+              setSelectedIds([]);
+            }}
+          />
+          <CircleButton icon={CheckIcon} onClick={confirmDelete} />
+        </>
+      );
+    }
+
+    if (isEditing) {
+      return (
+        <>
+          <CircleButton
+            icon={XMarkIcon}
+            onClick={() => {
+              setIsEditing(false);
+              setEditValues({});
+            }}
+          />
+          <CircleButton icon={CheckIcon} onClick={confirmEdit} />
+        </>
+      );
+    }
+
+    return (
+      <>
+        <CircleButton icon={PencilIcon} onClick={startEditing} />
+        <CircleButton icon={TrashIcon} onClick={() => setIsDeleting(true)} />
+      </>
+    );
+  };
+
   return (
-    <div className="bg-bytebank-white rounded-lg w-full max-h-[86.4vh] flex flex-col p-5 overflow-hidden">
+    <div className="bg-bytebank-white rounded-lg w-full max-h-[86.4vh] flex flex-col p-5 overflow-hidden md:px-[25%] lg:px-5">
       <div className="flex justify-between items-center h-10 shrink-0">
         <span className="text-bytebank-xl text-black font-bold">Extrato</span>
-        <div className="flex justify-between w-[95px]">
-          {!isDeleting && !isEditing && (
-            <>
-              <CircleButton icon={PencilIcon} onClick={startEditing} />
-              <CircleButton icon={TrashIcon} onClick={() => setIsDeleting(true)} />
-            </>
-          )}
-
-          {isDeleting && (
-            <>
-              <CircleButton
-                icon={XMarkIcon}
-                onClick={() => {
-                  setIsDeleting(false);
-                  setSelectedIds([]);
-                }}
-              />
-              <CircleButton icon={CheckIcon} onClick={confirmDelete} />
-            </>
-          )}
-
-          {isEditing && (
-            <>
-              <CircleButton
-                icon={XMarkIcon}
-                onClick={() => {
-                  setIsEditing(false);
-                  setEditValues({});
-                }}
-              />
-              <CircleButton icon={CheckIcon} onClick={confirmEdit} />
-            </>
-          )}
+        <div className="flex items-center gap-x-2">
+          {renderActions()}
         </div>
       </div>
 
-      <div className="mt-6 space-y-4 overflow-y-auto pr-2">
+      <div className="mt-6 space-y-4 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-bytebank-green/70 scrollbar-track-transparent">
         {transactions.map((tx) => (
           <div key={tx.id} className="flex flex-col w-full">
             <span className="font-semibold text-bytebank-green text-bytebank-sm capitalize">
               {formatMonth(tx.createdAt)}
             </span>
+
             <div className="flex justify-between py-2 items-center">
               <div className="flex items-center gap-2">
                 {isDeleting && (
@@ -162,8 +170,9 @@ export default function DashboardBankStatment({ data }: BankStatmentProps) {
                   {formatTransactionType(tx.type)}
                 </span>
               </div>
+
               <div className="flex flex-col items-end">
-                <span className="font-normal text-[#8B8B8B] text-bytebank-sm">
+                <span className="font-normal text-bytebank-muted text-bytebank-sm">
                   {formatDate(tx.createdAt)}
                 </span>
                 {tx?.updatedAt && (
@@ -173,25 +182,25 @@ export default function DashboardBankStatment({ data }: BankStatmentProps) {
                 )}
               </div>
             </div>
+
             {isEditing ? (
               <InputMoney
                 value={editValues[tx.id]?.amount ?? 0}
-                color='bytebank-green'
+                color="bytebank-green"
                 onChange={(newVal) => {
-                  setEditValues(prev => ({
+                  setEditValues((prev) => ({
                     ...prev,
-                    [tx.id]: { amount: newVal }
+                    [tx.id]: { amount: newVal },
                   }));
                 }}
               />
             ) : (
-              <span className={`font-semibold text-base ${Number(tx.amount) < 0 ? 'text-red-600' : ''}`}>
+              <span className="font-semibold text-base">
                 {formatCurrency(Number(tx.amount))}
               </span>
             )}
-            <div className="relative h-0.5 mt-2">
-              <div className="absolute bottom-0 w-[80%] h-[1px] bg-bytebank-green"></div>
-            </div>
+
+            <div className="w-4/5 h-px bg-bytebank-green mt-2" />
           </div>
         ))}
       </div>
@@ -200,6 +209,6 @@ export default function DashboardBankStatment({ data }: BankStatmentProps) {
 }
 
 function formatTransactionType(type: TransactionTypeEnum | string): string {
-  const option = transactionTypeOptions.find(opt => opt.type === type);
+  const option = transactionTypeOptions.find((opt) => opt.type === type);
   return option ? option.value : 'Outro';
 }
