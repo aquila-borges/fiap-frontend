@@ -4,8 +4,8 @@ import DashboardHeader from "@/components/layout/AuthenticatedHeader/Header";
 import DashboardTransaction from "@/components/dashboard/DashboardTransaction/DashboardTransaction";
 import { ClientWithBalanceResponseDTO } from "@/core/dto/client/ClientWithBalanceResponseDTO";
 import { TransactionResponseDTO } from "@/core/dto/transaction/TransactionResponseDTO";
-import DashboardMenuHorizontal from "@/components/dashboard/DashboardMenuVertical/DashboardMenuVertical";
-import DashboardMenuVertical from "@/components/dashboard/DashboardMenuHorizontal/DashboardMenuHorizontal";
+import DashboardMenuVertical from "@/components/dashboard/DashboardMenuVertical/DashboardMenuVertical";
+import DashboardMenuHorizontal from "@/components/dashboard/DashboardMenuHorizontal/DashboardMenuHorizontal";
 
 export const dynamic = "force-dynamic"; // Garante que será SSR
 
@@ -45,34 +45,36 @@ export default async function Dashboard() {
   const transactions = await getTransactions(clientBalance.bankAccount.id);
 
   return (
-    <div className="min-h-screen flex flex-col gap-y-7">
+    <>
       <DashboardHeader />
-      <main className="flex justify-center flex-grow">
-        <div className="container px-4 flex flex-col flex-grow">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-6 gap-y-6 h-full">
-            <div className="lg:col-span-2 flex justify-end">
-              <div className="hidden sm:block lg:hidden">
-                <DashboardMenuVertical />
+      <div className="max-h-screen flex flex-col gap-y-7 sm:mt-5">
+        <main className="flex justify-center flex-grow">
+          <div className="container px-4 flex flex-col flex-grow">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-6 gap-y-6 h-full">
+              <div className="lg:col-span-2 flex lg:justify-end">
+                <div className="hidden sm:block lg:hidden w-full">                
+                  <DashboardMenuHorizontal />
+                </div>
+                
+                <div className="hidden lg:block">
+                  <DashboardMenuVertical />
+                </div>
               </div>
-              
-              <div className="hidden lg:block">
-                <DashboardMenuHorizontal />
-              </div>
-            </div>
 
-            <div className="lg:col-span-7">
-              <div className="grid grid-cols-1 gap-y-6 h-full">
-                <DashboardBalance data={clientBalance} />
-                <DashboardTransaction bankAccountId={clientBalance.bankAccount.id} />
+              <div className="lg:col-span-7">
+                <div className="grid grid-cols-1 gap-y-6 h-full">
+                  <DashboardBalance data={clientBalance} />
+                  <DashboardTransaction bankAccountId={clientBalance.bankAccount.id} />
+                </div>
               </div>
-            </div>
 
-            <div className="lg:col-span-3 max-h-screen">
-              <DashboardBankStatment data={transactions} />
+              <div className="lg:col-span-3 max-h-screen">
+                <DashboardBankStatment data={transactions} />
+              </div>
             </div>
           </div>
-        </div>
-      </main>
-    </div>
+        </main>
+      </div>
+    </>
   );
 }

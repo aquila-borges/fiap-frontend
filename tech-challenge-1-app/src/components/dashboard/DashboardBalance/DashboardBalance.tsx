@@ -34,7 +34,16 @@ export default function DashboardBalance({ data }: DashboardBalanceProps) {
   }, [bankAccount.id]);
 
   return (
-    <div className="bg-bytebank-black rounded-lg w-full p-5 pl-6">
+    <div className="bg-bytebank-black rounded-lg w-full p-5 pl-6 relative flex flex-col items-center md:items-start gap-y-6 md:gap-y-0">
+      <img
+        src="/images/Pixels1.png"
+        className="h-[120px] w-[120px] md:h-[140px] md:w-[140px] absolute top-0 left-0 md:left-auto md:right-0 opacity-80 pointer-events-none lg:hidden"
+      />
+      <img
+        src="/images/Pixels2.png"
+        className="h-[120px] w-[120px] md:h-[140px] md:w-[140px] absolute bottom-0 md:left-0 right-0 opacity-80 pointer-events-none lg:hidden"
+      />
+
       <div className="flex flex-col">
         <div className="mb-3">
           <div className="font-semibold text-bytebank-xl text-white w-full">
@@ -47,29 +56,33 @@ export default function DashboardBalance({ data }: DashboardBalanceProps) {
         </div>
       </div>
 
-      <div className="float-right ">
-        <div className="flex items-center border-b-2 border-b-bytebank-orange py-3 mb-3 min-w-[250px] mr-5">
-          <span className="text-xl font-semibold text-white">Saldo</span>
-          {showBalance ? (
-            <EyeSlashIcon
-              className="w-5 h-5 text-bytebank-orange ml-4 hover:cursor-pointer"
-              onClick={toggleBalanceVisibility}
-            />
-          ) : (
-            <EyeIcon
-              className="w-5 h-5 text-bytebank-orange ml-4 hover:cursor-pointer"
-              onClick={toggleBalanceVisibility}
-            />
-          )}
-        </div>
-        <div className="flex flex-col">
-          <span className="text-white text-base font-normal">Conta Corrente</span>
+      <div className="flex justify-end z-10  md:pb-20 pb-10">
+        <div className="flex flex-col md:absolute right-15">
+          <div className="flex items-center border-b-2 lg:border-b-bytebank-orange border-b-white py-3 mb-3 max-w-[270px] min-w-[250px]">
+            <span className="text-xl font-semibold text-white">Saldo</span>
+            {showBalance ? (
+              <EyeSlashIcon
+                className="w-5 h-5 lg:text-bytebank-orange text-white ml-4 hover:cursor-pointer"
+                onClick={toggleBalanceVisibility}
+              />
+            ) : (
+              <EyeIcon
+                className="w-5 h-5 lg:text-bytebank-orange text-white ml-4 hover:cursor-pointer"
+                onClick={toggleBalanceVisibility}
+              />
+            )}
+          </div>
+          <div className="flex flex-col">
+            <span className="text-white text-base font-normal">Conta Corrente</span>
 
-          <span className="text-white font-normal text-[31px]">
-            {showBalance ? formatCurrency(Number(bankAccount.balance)) : "••••••"}
-          </span>
+            <span className="text-white font-normal text-[31px]">
+              {showBalance ? formatCurrency(Number(bankAccount.balance)) : "••••••"}
+            </span>
+          </div>
         </div>
       </div>
+
+      <img src="/images/Ilustracao1.png" className="md:relative left-0 pointer-events-none lg:hidden z-5 w-auto self-center md:self-start" />
     </div>
   );
 }

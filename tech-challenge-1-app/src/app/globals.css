@@ -103,12 +103,3 @@ body {
 input[type="checkbox"] {
   accent-color: var(--bytebank-black);
 }
-
-.options-wrap {
-  border-bottom: 1px solid var(--bytebank-black);
-  transition: border-color 0.3s ease;
-
-  &:hover {
-    border-bottom-color: var(--bytebank-green);
-  }
-}

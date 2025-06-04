@@ -43,11 +43,12 @@ export default function DashboardTransaction({ bankAccountId }: TransactionProps
     <div className="bg-bytebank-gray rounded-lg w-full h-full p-7 relative overflow-hidden flex flex-col ">
       <img
         src="/images/Pixels3.png"
-        className="h-[140px] w-[140px] md:h-[180px] md:w-[180px] absolute top-0 right-0 opacity-80 pointer-events-none"
+        className="h-[140px] w-[140px] md:h-[180px] md:w-[180px] absolute top-0 left-0 md:left-auto md:right-0 opacity-80 pointer-events-none"
       />
+
       <img
         src="/images/Pixels4.png"
-        className="h-[140px] w-[140px] md:h-[180px] md:w-[180px] absolute bottom-0 left-0 opacity-80 pointer-events-none"
+        className="h-[140px] w-[140px] md:h-[180px] md:w-[180px] absolute bottom-0 right-0 md:right-auto md:left-0 opacity-80 pointer-events-none"
       />
 
       <div className="z-10 w-full">
