@@ -73,17 +73,9 @@
   }
 }*/
 
-html {
+* {
   scrollbar-width: thin;
   scrollbar-color: var(--bytebank-black) transparent;
-}
-
-html, body {
-  height: 100%;
-}
-
-body {
-  background: var(--bytebank-light-green);
 }
 
 /* Scrollbar customizada para a aplicação inteira */
@@ -99,6 +91,16 @@ body {
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: var(--bytebank-light-green);
+}
+
+
 
 input[type="checkbox"] {
   accent-color: var(--bytebank-black);

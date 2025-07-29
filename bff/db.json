@@ -10,16 +10,23 @@
   "bankAccounts": [
     {
       "id": "39ce5f35-41bb-475d-b453-dea4b39cb14d",
-      "balance": 51000
+      "balance": 950
     }
   ],
   "transactions": [
     {
-      "id": "9aeee745-a768-41f4-841f-385ded6ea1f6",
+      "id": "770187d7-3ad3-4844-8ad6-5c608697b971",
       "bankAccountId": "39ce5f35-41bb-475d-b453-dea4b39cb14d",
-      "amount": 51000,
-      "type": "bank_transfer",
-      "createdAt": "2025-06-04T04:50:01.191Z"
+      "amount": 1500,
+      "type": "currency_exchange",
+      "createdAt": "2025-07-01T21:53:46.048Z"
+    },
+    {
+      "id": "b6519acc-22ad-4e4d-a920-13fc0d43b24e",
+      "bankAccountId": "39ce5f35-41bb-475d-b453-dea4b39cb14d",
+      "amount": -550,
+      "type": "currency_exchange",
+      "createdAt": "2025-07-28T04:11:04.136Z"
     }
   ]
 }
