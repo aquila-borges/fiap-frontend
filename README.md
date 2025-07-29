@@ -75,7 +75,7 @@ The project uses React 19, TailwindCSS 4, and other modern tools to provide a fr
 - concurrently (run frontend and backend together)
 
 ## Notes
-The backend is a simple mock server and does not persist data between restarts.
+The backend is a simple mock server and it does persist data between restarts.
 
 Customize the bff/db.json to change backend data.
 
